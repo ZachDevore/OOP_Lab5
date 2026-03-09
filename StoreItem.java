@@ -1,32 +1,66 @@
+/**
+ * @author Zachary Devore
+ * Date: 3/9/26
+ * Section: CSC 311-002
+ */
 public class StoreItem {
     
-    // Attributes
+    /** Unique id for each item in the store */
     private int itemID;
+
+    /** Price for each item in the store */
     private double price;
+
+    /** Quantity of each item in the store */
     private int quantity;
 
-    // Constructor
+    /**
+     * Creates a new instance of StoreItem
+     * @param itemID
+     * @param price
+     * @param quantity
+     */
     public StoreItem(int itemID, double price, int quantity) {
         this.itemID = itemID;
         this.price = price;
         this.quantity = quantity;
     }
 
-    // No args Consctructor should not be used. -1 denotes an issue
-    public StoreItem() {
-        this.itemID = -1;
-        this.price = -1;
-    }
-
-    // Getters
+    /**
+     * Getter for ItemID
+     * @return the ItemID of an item
+     */
     public int getItemID() {return this.itemID;}
+
+    /**
+     * Getter for price
+     * @return the price of an item
+     */
     public double getPrice() {return this.price;}
+
+    /**
+     * Getter for quantity
+     * @return The quantity of the items in the store
+     */
     public int getQuantity() {return this.quantity;}
 
 
-    // Setters
+    /**
+     * set the itemID
+     * @param itemID 
+     */
     public void setItemID(int itemID) {this.itemID = itemID;}
+
+    /**
+     * set the price
+     * @param price
+     */
     public void setPrice(double price) {this.price = price;}
+
+    /**
+     * set the quantity
+     * @param quantity
+     */
     public void setQuantity(int quantity) {this.quantity = quantity;}
 
 }
