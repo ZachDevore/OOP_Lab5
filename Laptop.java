@@ -27,10 +27,10 @@ public class Laptop extends ElectronicItem {
                 double powerWatts, int warrentyMonths, boolean isRechargable,
                 double screenSize, int ram) {
 
-            super(itemID, price, quantity, brand, warrentyMonths, powerWatts, isRechargable); // Calling constructor from ElectronicItem
+            super(3, 2000, 0, "Apple", 12, 24, true); // Calling constructor from ElectronicItem
 
-            this.screenSize = screenSize;
-            this.ram = ram;
+            this.screenSize = 14;
+            this.ram = 32;
         }
 
     /**

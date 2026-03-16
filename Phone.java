@@ -11,26 +11,15 @@ public class Phone extends ElectronicItem {
     /** The kind of port the phone uses to charge */
     private String chargerPort;
 
-    /**
-     * 
-     * @param itemID
-     * @param price
-     * @param quantity
-     * @param brand
-     * @param powerWatts
-     * @param warrentyMonths
-     * @param isRechargable
-     * @param os
-     * @param chargerPort
-     */
-    public Phone(int itemID, double price, int quantity, String brand,
-                double powerWatts, int warrentyMonths, boolean isRechargable,
-                String os, String chargerPort) {
+   /**
+    * Constructor for Iphone
+    */
+    public Phone() {
 
-       super(itemID, price, quantity, brand, warrentyMonths, powerWatts, isRechargable); // Calling constructor from ElectronicItem
+       super(1, 699, 0, "Apple", 25, 24, true); // Calling constructor from ElectronicItem
 
-       this.os = os;
-       this.chargerPort = chargerPort;
+       this.os = "ios";
+       this.chargerPort = "usb-c";
     }
 
     /**
