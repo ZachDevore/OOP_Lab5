@@ -12,16 +12,7 @@ public class TV extends ElectronicItem {
     private boolean isVesaCombatiable;
 
     /**
-     * 
-     * @param itemID
-     * @param price
-     * @param quantity
-     * @param brand
-     * @param powerWatts
-     * @param warrentyMonths
-     * @param isRechargable
-     * @param isSmart
-     * @param vesaCombatiable
+     * Constructor for a Samsung TV
      */
     public TV() {
 

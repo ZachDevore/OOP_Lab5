@@ -12,20 +12,9 @@ public class Laptop extends ElectronicItem {
     private int ram;
 
     /**
-     * 
-     * @param itemID
-     * @param price
-     * @param quantity
-     * @param brand
-     * @param powerWatts
-     * @param warrentyMonths
-     * @param isRechargable
-     * @param screenSize
-     * @param ram
+     * Constructor for a Macbook
      */
-    public Laptop(int itemID, double price, int quantity, String brand,
-                double powerWatts, int warrentyMonths, boolean isRechargable,
-                double screenSize, int ram) {
+    public Laptop() {
 
             super(3, 2000, 0, "Apple", 12, 24, true); // Calling constructor from ElectronicItem
 
