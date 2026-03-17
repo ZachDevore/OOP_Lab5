@@ -17,9 +17,11 @@ public class WQSDevoreWesleyWilkersonSmith {
 
     public int getInventoryCount() {return this.inventoryCount;}
 
+   
+
     public static void main(String[] args) {
         WQSDevoreWesleyWilkersonSmith store = new WQSDevoreWesleyWilkersonSmith(); // Initialize store object
-        Scanner scanner = new Scanner(System.in); // Initialize scanner object to read from the terminal
+        Scanner scanner = new Scanner(System.in); // Initialize scanner object to read from the Standard Input
 
         boolean flag = false;
         
@@ -71,7 +73,8 @@ public class WQSDevoreWesleyWilkersonSmith {
                             // Reads as store[inventoryCount] = new Shoe()
                             store.getStoreInventory()[store.getInventoryCount()] = new Shoe(itemID, brand, color, price, quantity, size, category, isSlipResistant, closureType);
 
-                            break; // exit
+                            store.inventoryCount++; // Incriment count
+                            continue; // exit
 
                         } else { // Add Shirt
                             System.out.print("(int) Enter ItemID: ");
@@ -92,9 +95,6 @@ public class WQSDevoreWesleyWilkersonSmith {
                             System.out.print("(String) Enter the Size: ");
                             String size = scanner.next();
 
-                            System.out.print("(String) Enter the Category: ");
-                            String category = scanner.next();
-
                             System.out.print("(String) Enter the type of sleeve: ");
                             String sleeveType = scanner.next();
 
@@ -104,14 +104,16 @@ public class WQSDevoreWesleyWilkersonSmith {
                             // Add the Shirt reads as store[inventoryCount] = new Shirt()
                             store.getStoreInventory()[store.getInventoryCount()] = new Shirt(itemID, price, quantity, brand, size, color, sleeveType, material);
 
-                            break; // exit 
+                            store.inventoryCount++;
+                            continue; // exit 
+                            
                         }
                     case 2:
                         //ElectricItem
-                        break;
+                        continue;
                     case 3:
                         //CleaningItem
-                        break;
+                        continue;
                     case 0:
                         //Exit
                         break;
@@ -122,7 +124,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                     flag = true;
                     break;
             }
-        } while (flag = false); // until the flag is triggered the program will keep prompting the user
+        } while (!flag); // until the flag is triggered the program will keep prompting the user
     }
 
     
