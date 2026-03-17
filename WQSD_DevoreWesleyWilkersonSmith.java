@@ -1,4 +1,5 @@
-import java.util.Scanner
+import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * @author Thomas Wesley
@@ -46,9 +47,31 @@ public class WQSD_DevoreWesleyWilkersonSmith {
                 System.out.println("Error: Please enter a numeric value between 1-3.");
                 scanner.nextLine(); // clears the "junk" text
             }
+
         }
-
-
-
     }//end of main
+
+    /**
+     * Displays the menu options for the user to select
+     */
+    private static void displayMainMenu(){
+        System.out.println("\n-----------------------------");
+        System.out.println("1. Sell an item.");
+        System.out.println("Add an item to inventory.");
+        System.out.println("Exit the Store.");
+        System.out.println("\n-----------------------------");
+    }
+
+    private static void sellItem(){
+        //logic for method
+    }
+
+    private static void addItem(){
+        /*
+        The logic for the method would be to add an item to the array list and keep track of
+        all the important info such as SKU #, Brand, Color, amount, etc.
+         */
+    }
+
+
 }//end of class
