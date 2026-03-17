@@ -28,7 +28,7 @@ public class WQSD_DevoreWesleyWilkersonSmith {
         while(selection !=3){
             displayMainMenu();
             // Check if the input is a number BEFORE we call nextInt()
-            if (Scanner.hasNextInt()) {
+            if (scanner.hasNextInt()) {
                 selection = scanner.nextInt();
                 scanner.nextLine(); // Clear the buffer
 
