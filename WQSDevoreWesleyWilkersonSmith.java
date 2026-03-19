@@ -269,8 +269,8 @@ public class WQSDevoreWesleyWilkersonSmith {
                             System.out.println("(int) Enter the calories: ");
                             int calories = scanner.nextInt();
 
-                            System.out.println("(int) Enter the expiration Date in the format MM/DD/YYYY");
-                            String expirationDate = scanner.next();
+                            System.out.println("(int) Enter the expiration Date in the format MMDDYYYY");
+                            int expirationDate = scanner.nextInt();
 
                             System.out.println("(String) Enter the color: ");
                             String color = scanner.next();
@@ -287,7 +287,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             System.out.println("(String) What is the shape of the fruit?");
                             String shape = scanner.next();
 
-                            store.getFoodItemInventory()[store.getFoodItemInventoryCount()] = new Fruit(itemID, price, quantity, calories, calories, color, hasSeeds, hasPeel, isSweet, shape);
+                            store.getFoodItemInventory()[store.getFoodItemInventoryCount()] = new Fruit(itemID, price, quantity, calories, expirationDate, color, hasSeeds, hasPeel, isSweet, shape);
                             store.incrementFoodItemInventoryCount();
                         
                         continue;
@@ -304,8 +304,8 @@ public class WQSDevoreWesleyWilkersonSmith {
                             System.out.println("(int) Enter the calories: ");
                             int calories = scanner.nextInt();
 
-                            System.out.println("(int) Enter the expiration Date in the format MM/DD/YYYY");
-                            String expirationDate = scanner.next();
+                            System.out.println("(int) Enter the expiration Date in the format MMDDYYYY");
+                            int expirationDate = scanner.nextInt();
 
                             System.out.println("(String) Enter the color: ");
                             String color = scanner.next();
@@ -322,7 +322,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             System.out.println("(boolean) Is the Vegetable a stem?");
                             boolean isStem = scanner.nextBoolean();
 
-                            store.getFoodItemInventory()[store.getFoodItemInventoryCount()] = new Vegetable(itemID, price, quantity, calories, calories, color, flag, isRoot, isFlower, isLeaf, isStem);
+                            store.getFoodItemInventory()[store.getFoodItemInventoryCount()] = new Vegetable(itemID, price, quantity, calories, expirationDate, color, flag, isRoot, isFlower, isLeaf, isStem);
                             store.foodItemInventoryCount++;
                             continue;
                         }
