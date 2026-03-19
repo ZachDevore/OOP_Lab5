@@ -2,11 +2,11 @@ import java.util.Scanner;
 public class WQSDevoreWesleyWilkersonSmith {
     
     /** Array of the Store Inventory */
-    private final StoreItem[] electricItemInventory;
+    private  StoreItem[] electricItemInventory;
 
-    private final StoreItem[] clothingItemInventory;
+    private  StoreItem[] clothingItemInventory;
 
-    private final StoreItem[] foodItemInventory;
+    private  StoreItem[] foodItemInventory;
 
     private int electricInventoryCount;
 
@@ -252,8 +252,80 @@ public class WQSDevoreWesleyWilkersonSmith {
                         }
                         continue;
                     case 3:
-                        //CleaningItem
+                        // FoodItem
+                        System.out.println("What kind of food item would you like to add?\nPress 1 for Fruit\nPress 2 for Vegetable");
+                        int fruitToAdd = scanner.nextInt();
+
+                        if (fruitToAdd == 1) { // Add Fruit
+                            System.out.println("(int) Enter the ItemID: ");
+                            int itemID = scanner.nextInt();
+
+                            System.out.println("(double) Enter the price $");
+                            double price = scanner.nextDouble();
+
+                            System.out.println("(int) Enter the quantity: ");
+                            int quantity = scanner.nextInt();
+
+                            System.out.println("(int) Enter the calories: ");
+                            int calories = scanner.nextInt();
+
+                            System.out.println("(int) Enter the expiration Date in the format MM/DD/YYYY");
+                            String expirationDate = scanner.next();
+
+                            System.out.println("(String) Enter the color: ");
+                            String color = scanner.next();
+
+                            System.out.println("(boolean) Does the fruit have seeds?");
+                            boolean hasSeeds = scanner.nextBoolean();
+
+                            System.out.println("(boolean) Does the fruit have a peel?");
+                            boolean hasPeel = scanner.nextBoolean();
+
+                            System.out.println("(boolean) Is the fruit Sweet?");
+                            boolean isSweet = scanner.nextBoolean();
+
+                            System.out.println("(String) What is the shape of the fruit?");
+                            String shape = scanner.next();
+
+                           // store.getFoodItemInventory()[store.getFoodItemInventoryCount()] = new Fruit(itemID, price, quantity, calories, expirationDate, hasSeeds, color, hasPeel, isSweet, shape); // Need to fix constructor parameter order
+                            store.incrementFoodItemInventoryCount();
+                        
                         continue;
+                        } else { // Add Vegetable
+                            System.out.println("(int) Enter the ItemID: ");
+                            int itemID = scanner.nextInt();
+
+                            System.out.println("(double) Enter the price $");
+                            double price = scanner.nextDouble();
+
+                            System.out.println("(int) Enter the quantity: ");
+                            int quantity = scanner.nextInt();
+
+                            System.out.println("(int) Enter the calories: ");
+                            int calories = scanner.nextInt();
+
+                            System.out.println("(int) Enter the expiration Date in the format MM/DD/YYYY");
+                            String expirationDate = scanner.next();
+
+                            System.out.println("(String) Enter the color: ");
+                            String color = scanner.next();
+
+                            System.out.println("(boolean) Is the Vegetable a root?");
+                            boolean isRoot = scanner.nextBoolean();
+
+                            System.out.println("(boolean) Is the Vegetable a flower?");
+                            boolean isFlower = scanner.nextBoolean();
+
+                            System.out.println("(boolean) Is the Vegetable a leaf?");
+                            boolean isLeaf = scanner.nextBoolean();
+
+                            System.out.println("(boolean) Is the Vegetable a stem?");
+                            boolean isStem = scanner.nextBoolean();
+
+                            store.getFoodItemInventory()[store.getFoodItemInventoryCount()] = new Vegetable(itemID, price, quantity, calories, calories, color, flag, isRoot, isFlower, isLeaf, isStem);
+                            store.foodItemInventoryCount++;
+                            continue;
+                        }
                     case 0:
                         //Exit
                         break;
