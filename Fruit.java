@@ -33,7 +33,7 @@ public class Fruit extends FoodItem {
                  boolean isSweet, String shape){
 
         //call constructor of food item
-        super(itemID, price, quantity, calories, expirationDate, hasSeeds, color);
+        super(itemID, price, quantity, calories, expirationDate, color, hasSeeds);
 
         this.shape = shape;
         this.hasPeel = hasPeel;
