@@ -33,11 +33,10 @@ public class Vegetable extends FoodItem {
      * @param isStem
      */
     public Vegetable(int itemID, double price, int quantity, int calories,
-                 int expirationDate, String color, boolean hasSeeds, boolean isRoot, boolean isFlower,
-                 boolean isLeaf, boolean isStem){
+                 int expirationDate, String color, boolean hasSeeds, boolean isRoot, boolean isFlower, boolean isLeaf, boolean isStem){
 
         //call constructor of food item
-        super(itemID, price, quantity, calories, expirationDate, hasSeeds, color);
+        super(itemID, price, quantity, calories, expirationDate, color, hasSeeds);
 
         this.isRoot = isRoot;
         this.isFlower = isFlower;
