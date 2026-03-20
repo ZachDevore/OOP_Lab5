@@ -70,7 +70,6 @@ public class WQSDevoreWesleyWilkersonSmith {
     public void displayItems(StoreItem[] items, int itemCount) {
         if (itemCount == 0) {
             System.out.println("There are no items in the inventory yet");
-            return;
         } else {
             for (int i = 0; i < itemCount; i++) {
                 System.out.println(items[i] + "\n");
