@@ -22,8 +22,8 @@ public class WQSDevoreWesleyWilkersonSmith {
     /** Constructor for the Store */
     public WQSDevoreWesleyWilkersonSmith() {
         this.electricItemInventory = new StoreItem[1000]; // Initialize with a capacity of 1000 items
-        this.clothingItemInventory = new StoreItem[1000];
-        this.foodItemInventory = new StoreItem[1000];
+        this.clothingItemInventory = new StoreItem[1000]; // Initialize with a capacity of 1000 items
+        this.foodItemInventory = new StoreItem[1000]; // Initialize with a capacity of 1000 items
         
         this.electricInventoryCount = 0;
         this.clothingItemInventoryCount = 0;
@@ -39,8 +39,13 @@ public class WQSDevoreWesleyWilkersonSmith {
     /** @return the array of food items in inventory */
     public StoreItem[] getFoodItemInventory() {return this.foodItemInventory;}
 
+    /** @return the number of items in the electric inventory */
     public int getElectricItemInventoryCount() {return this.electricInventoryCount;}
+
+    /** @return the number of clothing items in the inventory */
     public int getClothingItemInventoryCount() {return this.clothingItemInventoryCount;}
+
+    /** @return the number of food items in the inventory */
     public int getFoodItemInventoryCount() {return this.foodItemInventoryCount;} 
 
     /** increments the count to reflect the number of electric items in the inventory */
@@ -59,6 +64,21 @@ public class WQSDevoreWesleyWilkersonSmith {
     }
 
     /**
+     * Prints out the items in the inventory
+     * @param items
+     */
+    public void displayItems(StoreItem[] items, int itemCount) {
+        if (itemCount == 0) {
+            System.out.println("There are no items in the inventory yet");
+            return;
+        } else {
+            for (int i = 0; i < itemCount; i++) {
+                System.out.println(items[i] + "\n");
+            }
+        }
+    }
+
+    /**
      * Adds a item to the store inventory
      * @param scanner
      */
@@ -68,6 +88,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
          switch (typeOfItem) {
                     case 1: // Adding a Clothing Item
+                        displayItems(clothingItemInventory, clothingItemInventoryCount); // Prints out the items the inventory
                         System.out.println("Which kind of Clothing Item would you like to add?\nPress 1 for Shoe, Press 2 for Shirt");
                         int typeOfClothingItem = scanner.nextInt();
 
@@ -136,6 +157,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             
                         }
                     case 2: // Adding an ElectricItem
+                        displayItems(electricItemInventory, electricInventoryCount); // Displays the items in the electric inventory
                         System.out.println("Which kind of electric item do you want to sell?\nPress 1 for TV\nPress 2 for Phone\nPress 3 for Laptop");
                         int typeOfElectricItem = scanner.nextInt();
 
@@ -239,8 +261,11 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 incrementElectricInventoryItemCount(); // Increments the count for number of electric items in the store
                                 return;
                             }
+                            
                         }
+                        break;
                     case 3: // Add Food Item
+                        displayItems(foodItemInventory, foodItemInventoryCount); // displays the items in the food inventory
                         System.out.println("What kind of food item would you like to add?\nPress 1 for Fruit\nPress 2 for Vegetable");
                         int fruitToAdd = scanner.nextInt();
 
@@ -333,16 +358,19 @@ public class WQSDevoreWesleyWilkersonSmith {
         
 
         do { // Ask the user if they want to add an item to inventory or sell the item
+        
 
             System.out.println("Press 1 to add inventory\nPress 2 to sell an item\nPress 0 to exit");
             int addOrSellItem = scanner.nextInt();
 
             switch(addOrSellItem) {
 
-                case 1:
+                case 1: // Add Inventory
                    store.addInventory(scanner); // Call the addInventory Method
+                   break;
                 case 2:
                     //Sell Inventory
+                    break;
                 case 0:
                     flag = true;
                     break;
