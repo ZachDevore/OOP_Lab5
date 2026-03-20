@@ -16,12 +16,14 @@ public class TV extends ElectronicItem {
     /**
      * Constructor for a Samsung TV
      */
-    public TV() {
+    public TV(int itemID, double price, int quantity,
+            String brand, int warrantyMonths, double powerWatts, boolean isRechargeable,
+            boolean isSmart, boolean isVesaCombatiable) {
 
-        super(2, 300.00, 0, "Samsung", 12, 12, false); // Calling constructor from ElectronicItem
+        super(itemID, price, quantity, brand, warrantyMonths, powerWatts, isRechargeable); // Calling constructor from ElectronicItem
 
-        this.isSmart = true;
-        this.isVesaCombatiable = true;
+        this.isSmart = isSmart;
+        this.isVesaCombatiable = isVesaCombatiable;
     }
 
     /** @return Whether or not the TV is smart or not */

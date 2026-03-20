@@ -28,7 +28,7 @@ public class FoodItem extends StoreItem {
      * @param hasSeeds
      */
     public FoodItem(int itemID, double price, int quantity, int calories,
-                    int expirationDate, boolean hasSeeds, String color) {
+                    int expirationDate, String color, boolean hasSeeds) {
 
         //call constructor of StoreItem
         super(itemID, price, quantity);

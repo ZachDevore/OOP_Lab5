@@ -34,7 +34,7 @@ public class ClothingItem extends StoreItem{
 
 
     /**
-     * Getter for brand type of the clotihng
+     * Getter for brand type of the clothing
      * @return  brand
      */
     public String getBrand() {return brand;}

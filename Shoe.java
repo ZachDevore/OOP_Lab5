@@ -9,25 +9,29 @@
 
 
 public class Shoe extends ClothingItem{
-    private category;
-    private isSlip_resistant;
-    private closure_type;
+    private String category;
+    private boolean isSlip_resistant;
+    private String closure_type;
 
     /**
-     * @param itemId
+     * @param itemID
      * @param brand
      * @param color
      * @param price
      * @param quantity
      * @param size
+     * @param category
+     * @param closure_type
+     * @param isSlip_resistant
      */
-    public Shoe(int ItemID, String brand, String color, double price,
+    public Shoe(int itemID, String brand, String color, double price,
                 int quantity, String size, String category, boolean isSlip_resistant,
                 String closure_type){
-        super(ItemID,brand,color,price,quantity,size)
+
+        super(itemID, price, quantity, brand, size, color);
 
         this.category = category;
-        this.slip_resistant = slip_resistant;
+        this.isSlip_resistant = isSlip_resistant;
         this.closure_type = closure_type;
     }
 
@@ -39,14 +43,15 @@ public class Shoe extends ClothingItem{
 
     public String getClosure_Type(){return closure_type;}
 
-    public void String setCategory(){return this.category = category;}
+    public void setCategory(){this.category = category;}
 
-    public void boolean setIsSlip_Resistant(){return this.slip_resistant = slip_resistant;}
+    public void setIsSlip_Resistant(){this.isSlip_resistant = isSlip_resistant;}
 
+    public void setClosure_type(String closure_type) {this.closure_type = closure_type;}
 
-    @override
+    @Override
     public String toString(){
-        return "ItemID" + this.getItemID +
+        return "Item Id" + this.getItemID() +
                 "\nPrice" + this.getPrice() +
                 "\nQuantity" + this.getQuantity() +
                 "\nBrand" + this.getBrand() +
@@ -54,6 +59,6 @@ public class Shoe extends ClothingItem{
                 "\nSize" + this.getSize() +
                 "\nCategory" + this.getCategory() +
                 "\nSlip Resistant" + this.getIsSlip_Resistant() +
-                "\n Closure Type" + this.getClosure_Type()
+                "\n Closure Type" + this.getClosure_Type();
     }
 }

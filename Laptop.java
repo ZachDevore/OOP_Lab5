@@ -1,3 +1,5 @@
+
+
 /**
  * @author Zachary Devore
  * Date: 3/10/26
@@ -14,12 +16,14 @@ public class Laptop extends ElectronicItem {
     /**
      * Constructor for a Macbook
      */
-    public Laptop() {
+    public Laptop(int itemID, double price, int quantity,
+                  String brand, int warrantyMonths, double powerWatts, boolean isRechargeable,
+                  double screenSize, int ram) {
 
-            super(3, 2000, 0, "Apple", 12, 24, true); // Calling constructor from ElectronicItem
+            super(itemID, price, quantity, brand, warrantyMonths, powerWatts, isRechargeable); // Calling constructor from ElectronicItem
 
-            this.screenSize = 14;
-            this.ram = 32;
+            this.screenSize = screenSize;
+            this.ram = ram;
         }
 
     /**

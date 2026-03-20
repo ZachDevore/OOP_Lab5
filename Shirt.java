@@ -11,7 +11,7 @@ public class Shirt extends ClothingItem{
 
 
     /**
-     * @param itemId
+     * @param itemID
      * @param brand
      * @param color
      * @param price
@@ -19,9 +19,9 @@ public class Shirt extends ClothingItem{
      * @param size
      */
 
-    public Shirt(int itemID, double price, int quantity,String brand, int size, String color, String sleeve_type, String material){
+    public Shirt(int itemID, double price, int quantity,String brand, String size, String color, String sleeve_type, String material){
 
-        super(itemId, price, quantity, brand, size, color);
+        super(itemID, price, quantity, brand, size, color);
 
         this.sleeve_type = sleeve_type;
         this.material = material;
@@ -35,7 +35,7 @@ public class Shirt extends ClothingItem{
 
     public void setSleeve_type(String sleeve_type) {this.sleeve_type = sleeve_type;}
 
-    @override
+    @Override
     public String toString(){
         return "ItemId" + this.getItemID() +
                 "\nPrice" + this.getPrice() +
@@ -44,7 +44,7 @@ public class Shirt extends ClothingItem{
                 "\nColor" + this.getColor() +
                 "\nSize" + this.getSize() +
                 "\nSleeve Type" + this.getSleeve_type() +
-                "\n Material" + this.getMaterial()
+                "\n Material" + this.getMaterial();
     }
 
 
