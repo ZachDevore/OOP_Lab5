@@ -92,6 +92,15 @@ public class WQSDevoreWesleyWilkersonSmith {
     }
 
     /**
+     * Calculate the total price of the item
+     * @param item
+     * @return the total price of the item
+     */
+    public double calculatePrice(StoreItem item) {
+        return item.getPrice() * calculateSalexTax(item); // Item Price * Sales Tax
+    }
+
+    /**
      * Adds a item to the store inventory
      * @param scanner
      */
