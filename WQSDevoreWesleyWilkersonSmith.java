@@ -72,13 +72,18 @@ public class WQSDevoreWesleyWilkersonSmith {
      */
     public StoreItem getStoreItem(StoreItem[] items, int itemCount, String name) {
         for (int i = 0; i < itemCount; i++) {
-            if (items[i].getName().equals(name)) {
+            if (items[i].getName().equals(name)) { // If item passed equals named pass it's a match
                 return items[i];
             }
         }
         return null; // If no items match return null
     }
 
+    public void addInventoryHardCoded() {
+        int index = getClothingItemInventoryCount();
+        
+
+    }
 
     /**
      * Prints out the items in the inventory
@@ -99,7 +104,7 @@ public class WQSDevoreWesleyWilkersonSmith {
      */
     public double calculateSalexTax(StoreItem item) {
         if (item instanceof FoodItem) {
-            return item.getPrice() * .03; // 3% sales tax for food
+            return item.getPrice() + .03; // 3% sales tax for food
         } else {
             return item.getPrice() * .07; // 7% sales tax for all other items
         }
@@ -111,7 +116,7 @@ public class WQSDevoreWesleyWilkersonSmith {
      * @return the total price of the item
      */
     public double calculatePrice(StoreItem item) {
-        return item.getPrice() * calculateSalexTax(item); // Item Price * Sales Tax
+        return item.getPrice() + calculateSalexTax(item); // Item Price * Sales Tax
     }
 
     /**
@@ -119,7 +124,13 @@ public class WQSDevoreWesleyWilkersonSmith {
      * @param scanner
      */
     public void addInventory(Scanner scanner) {
-         System.out.println("Which kind of item would you like to add?\n Press 1 for Clothing Item\n Press 2 for Electronic Item\n Press 3 for Cleaning Item\n Press 0 to stop adding items");
+        System.out.println(
+        "Which kind of item would you like to add?\n" +
+        " Press 1 for Clothing Item\n" +
+        " Press 2 for Electronic Item\n" +
+        " Press 3 for Food Item\n" +
+        " Press 0 to stop adding items\n"
+);
         int typeOfItem = scanner.nextInt();
 
          switch (typeOfItem) {
@@ -133,13 +144,13 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int itemID = scanner.nextInt();
 
                             System.out.println("(String) Enter the Name: ");
-                            String name = scanner.next();
+                            String name = scanner.nextLine();
 
                             System.out.print("(String) Enter the Brand: ");
-                            String brand = scanner.next();
+                            String brand = scanner.nextLine();
 
                             System.out.print("(String) Enter the Color: ");
-                            String color = scanner.next();
+                            String color = scanner.nextLine();
 
                             System.out.print("(double) Enter the Price: $");
                             double price = scanner.nextDouble();
@@ -148,16 +159,16 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int quantity = scanner.nextInt();
 
                             System.out.print("(String) Enter the Size: ");
-                            String size = scanner.next();
+                            String size = scanner.nextLine();
 
                             System.out.print("(String) Enter the Category: ");
-                            String category = scanner.next();
+                            String category = scanner.nextLine();
 
                             System.out.print("(boolean) Enter weather is slip resistant: ");
                             boolean isSlipResistant = scanner.nextBoolean();
 
                             System.out.print("(String) Enter the Closure type: ");
-                            String closureType = scanner.next();
+                            String closureType = scanner.nextLine();
 
                             getClothingItemInventory()[getClothingItemInventoryCount()] = new Shoe(itemID, name, brand, color, price, quantity, size, category, isSlipResistant, closureType); // Add Shoe
 
@@ -169,13 +180,13 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int itemID = scanner.nextInt();
 
                             System.out.println("(String) Enter the Name: ");
-                            String name = scanner.next();
+                            String name = scanner.nextLine();
 
                             System.out.print("(String) Enter the Brand: ");
-                            String brand = scanner.next();
+                            String brand = scanner.nextLine();
 
                             System.out.print("(String) Enter the Color: ");
-                            String color = scanner.next();
+                            String color = scanner.nextLine();
 
                             System.out.print("(double) Enter the Price: $");
                             double price = scanner.nextDouble();
@@ -184,13 +195,13 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int quantity = scanner.nextInt();
 
                             System.out.print("(String) Enter the Size: ");
-                            String size = scanner.next();
+                            String size = scanner.nextLine();
 
                             System.out.print("(String) Enter the type of sleeve: ");
-                            String sleeveType = scanner.next();
+                            String sleeveType = scanner.nextLine();
 
                             System.out.print("(String) Enter the type of material: ");
-                            String material = scanner.next();
+                            String material = scanner.nextLine();
 
                             getClothingItemInventory()[getClothingItemInventoryCount()] = new Shirt(itemID, name, price, quantity, brand, size, color, sleeveType, material); // Adds Shirt
                            
@@ -210,7 +221,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 int itemID = scanner.nextInt();
 
                                 System.out.println("(String) Enter the Name: ");
-                                String name = scanner.next();
+                                String name = scanner.nextLine();
 
                                 System.out.println("(double) Enter the price $");
                                 double price = scanner.nextDouble();
@@ -219,7 +230,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 int quantity = scanner.nextInt();
 
                                 System.out.println("(String) Enter the brand: ");
-                                String brand = scanner.next();
+                                String brand = scanner.nextLine();
 
                                 System.out.println("(int) Enter the warrenty months: ");
                                 int warrentyMonths = scanner.nextInt();
@@ -245,7 +256,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 int itemID = scanner.nextInt();
 
                                 System.out.println("(String) Enter the Name: ");
-                                String name = scanner.next();
+                                String name = scanner.nextLine();
 
                                 System.out.println("(double) Enter the price $");
                                 double price = scanner.nextDouble();
@@ -254,7 +265,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 int quantity = scanner.nextInt();
 
                                 System.out.println("(String) Enter the brand: ");
-                                String brand = scanner.next();
+                                String brand = scanner.nextLine();
 
                                 System.out.println("(int) Enter the warrenty months: ");
                                 int warrentyMonths = scanner.nextInt();
@@ -266,10 +277,10 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 boolean isRechargable = scanner.nextBoolean();
 
                                 System.out.println("(String) Enter the operating system: ");
-                                String os = scanner.next();
+                                String os = scanner.nextLine();
 
                                 System.out.println("(String) Enter the type of chargerPort");
-                                String chargerPort = scanner.next();
+                                String chargerPort = scanner.nextLine();
 
                                 getElectricItemInventory()[getElectricItemInventoryCount()] = new Phone(itemID, name, price, quantity, brand, warrentyMonths, powerWatts, isRechargable, os, chargerPort); // Adds Phone to the inventory
 
@@ -281,7 +292,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 int itemID = scanner.nextInt();
 
                                 System.out.println("(String) Enter the Name: ");
-                                String name = scanner.next();
+                                String name = scanner.nextLine();
 
                                 System.out.println("(double) Enter the price $");
                                 double price = scanner.nextDouble();
@@ -290,7 +301,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 int quantity = scanner.nextInt();
 
                                 System.out.println("(String) Enter the brand: ");
-                                String brand = scanner.next();
+                                String brand = scanner.nextLine();
 
                                 System.out.println("(int) Enter the warrenty months: ");
                                 int warrentyMonths = scanner.nextInt();
@@ -325,7 +336,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int itemID = scanner.nextInt();
 
                             System.out.println("(String) Enter the Name: ");
-                            String name = scanner.next();
+                            String name = scanner.nextLine();
 
                             System.out.println("(double) Enter the price $");
                             double price = scanner.nextDouble();
@@ -340,7 +351,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int expirationDate = scanner.nextInt();
 
                             System.out.println("(String) Enter the color: ");
-                            String color = scanner.next();
+                            String color = scanner.nextLine();
 
                             System.out.println("(boolean) Does the fruit have seeds?");
                             boolean hasSeeds = scanner.nextBoolean();
@@ -352,7 +363,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             boolean isSweet = scanner.nextBoolean();
 
                             System.out.println("(String) What is the shape of the fruit?");
-                            String shape = scanner.next();
+                            String shape = scanner.nextLine();
 
                             getFoodItemInventory()[getFoodItemInventoryCount()] = new Fruit(itemID, name, price, quantity, calories, expirationDate, color, hasSeeds, hasPeel, isSweet, shape); // Adds fruit to the store inventory
 
@@ -363,7 +374,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int itemID = scanner.nextInt();
 
                             System.out.println("(String) Enter the Name: ");
-                            String name = scanner.next();
+                            String name = scanner.nextLine();
 
                             System.out.println("(double) Enter the price $");
                             double price = scanner.nextDouble();
@@ -378,7 +389,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int expirationDate = scanner.nextInt();
 
                             System.out.println("(String) Enter the color: ");
-                            String color = scanner.next();
+                            String color = scanner.nextLine();
 
                             System.out.println("(boolean) Does the Vegetable have seeds?");
                             boolean hasSeeds = scanner.nextBoolean();
@@ -408,6 +419,8 @@ public class WQSDevoreWesleyWilkersonSmith {
    
 
     public static void main(String[] args) {
+
+
         WQSDevoreWesleyWilkersonSmith store = new WQSDevoreWesleyWilkersonSmith(); // Initialize store object
         Scanner scanner = new Scanner(System.in); // Initialize scanner object to read from the Standard Input
 
