@@ -9,7 +9,7 @@ public class ElectronicItem extends StoreItem {
     private String brand;
 
     /** Number of months the warrenty covers */
-    private int warrantyMonths;
+    private int warrentyMonths;
 
     /** the power usage of the device in Watts */
     private double powerWatts;
@@ -28,12 +28,12 @@ public class ElectronicItem extends StoreItem {
      * @param isRechargeable
      */
     public ElectronicItem(int itemID, String name, double price, int quantity,
-                        String brand, int warrantyMonths, double powerWatts, boolean isRechargeable) {
+                        String brand, int warrentyMonths, double powerWatts, boolean isRechargeable) {
 
         super(itemID, name, price, quantity); // Calling the constructor from StoreItem
 
         this.brand = brand;
-        this.warrantyMonths = warrantyMonths;
+        this.warrentyMonths = warrentyMonths;
         this. powerWatts = powerWatts;
         this.isRechargeable = isRechargeable;
     }
@@ -48,7 +48,7 @@ public class ElectronicItem extends StoreItem {
      * Getter for the warrenty
      * @return number of months the warrenty covers
      */
-    public int getWarrentyMonths() {return this.warrantyMonths;}
+    public int getWarrentyMonths() {return this.warrentyMonths;}
 
     /**
      * Getter for the power usage
@@ -72,7 +72,7 @@ public class ElectronicItem extends StoreItem {
      * Sets the warrenty months of the item
      * @param warrentyMonths
      */
-    public void setWarrentyMonths(int warrentyMonths) {this.warrantyMonths = warrentyMonths;}
+    public void setWarrentyMonths(int warrentyMonths) {this.warrentyMonths = warrentyMonths;}
 
     /**
      * Sets the power usage of the item
