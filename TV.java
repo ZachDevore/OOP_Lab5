@@ -8,8 +8,8 @@ public class TV extends ElectronicItem {
     /** Weather is not the TV is a smart TV */
     private boolean isSmart;
 
-    /** Weather or not the TV is compatable with a vesa mount */
-    private boolean isVesaCombatiable;
+    /** Weather or not the TV is compatible with a vesa mount */
+    private boolean isVesaCompatible;
     
     //Two spellings of compatible in this class
 
@@ -17,20 +17,20 @@ public class TV extends ElectronicItem {
      * Constructor for a Samsung TV
      */
     public TV(int itemID, String name, double price, int quantity,
-            String brand, int warrantyMonths, double powerWatts, boolean isRechargeable,
-            boolean isSmart, boolean isVesaCombatiable) {
+            String brand, int warrentyMonths, double powerWatts, boolean isRechargeable,
+            boolean isSmart, boolean isVesaCompatible) {
 
-        super(itemID, name, price, quantity, brand, warrantyMonths, powerWatts, isRechargeable); // Calling constructor from ElectronicItem
+        super(itemID, name, price, quantity, brand, warrentyMonths, powerWatts, isRechargeable); // Calling constructor from ElectronicItem
 
         this.isSmart = isSmart;
-        this.isVesaCombatiable = isVesaCombatiable;
+        this.isVesaCompatible = isVesaCompatible;
     }
 
     /** @return Whether or not the TV is smart or not */
     public boolean getIsSmart() {return this.isSmart;}
 
-    /** @return Whether or not the TV is VESA compatable */
-    public boolean getIsVesaCompatable() {return this.isVesaCombatiable;}
+    /** @return Whether or not the TV is VESA compatible */
+    public boolean getIsVesaCompatible() {return this.isVesaCompatible;}
 
     /**
      * Sets whether or not the TV is smart
@@ -42,7 +42,7 @@ public class TV extends ElectronicItem {
      * Sets whether or not the TV is VESA compatable
      * @param isVesaCompatable
      */
-    public void setIsVesaCompatable(boolean isVesaCompatable) {this.isVesaCombatiable = isVesaCompatable;}
+    public void setIsVesaCompatible(boolean isVesaCompatible) {this.isVesaCompatible= isVesaCompatible;}
 
      /**
      * Represents a TV with the attributes ItemID, Price, Quantity, Brand, Warrenty Months,
@@ -58,7 +58,7 @@ public class TV extends ElectronicItem {
                 "\nPower Watts: " + this.getPowerWatts() + 
                 "\nisRechargable: " + this.getIsRechargable() + 
                 "\nIsSmart: " + this.getIsSmart() + 
-                "\nVesa Compatable: " + this.getIsVesaCompatable();
+                "\nVesa Compatible: " + this.getIsVesaCompatible();
     }
 
 }
