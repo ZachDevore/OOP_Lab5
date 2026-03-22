@@ -4,12 +4,12 @@ public class CleaningSupply extends HouseholdItem {
     private boolean toxic;
     private boolean flammable;
 
-    public CleaningSupply(int itemID, double price, int quantity,
+    public CleaningSupply(int itemID, String name, double price, int quantity,
                           double weight, String material, String areaOfUse,
                           String[] chemicalsContained,
                           boolean toxic, boolean flammable){
 
-        super(itemID, price, quantity, weight, material, areaOfUse);
+        super(itemID, name, price, quantity, weight, material, areaOfUse);
 
         this.chemicalsContained = chemicalsContained;
         this.toxic = toxic;

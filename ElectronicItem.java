@@ -27,10 +27,10 @@ public class ElectronicItem extends StoreItem {
      * @param powerWatts
      * @param isRechargeable
      */
-    public ElectronicItem(int itemID, double price, int quantity,
+    public ElectronicItem(int itemID, String name, double price, int quantity,
                         String brand, int warrantyMonths, double powerWatts, boolean isRechargeable) {
 
-        super(itemID, price, quantity); // Calling the constructor from StoreItem
+        super(itemID, name, price, quantity); // Calling the constructor from StoreItem
 
         this.brand = brand;
         this.warrantyMonths = warrantyMonths;

@@ -19,9 +19,9 @@ public class Shirt extends ClothingItem{
      * @param size
      */
 
-    public Shirt(int itemID, double price, int quantity,String brand, String size, String color, String sleeve_type, String material){
+    public Shirt(int itemID, String name, double price, int quantity,String brand, String size, String color, String sleeve_type, String material){
 
-        super(itemID, price, quantity, brand, size, color);
+        super(itemID, name, price, quantity, brand, size, color);
 
         this.sleeve_type = sleeve_type;
         this.material = material;

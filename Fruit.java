@@ -28,12 +28,12 @@ public class Fruit extends FoodItem {
      * @param isSweet
      * @param shape
      */
-    public Fruit(int itemID, double price, int quantity, int calories,
+    public Fruit(int itemID, String name, double price, int quantity, int calories,
                  int expirationDate, String color, boolean hasSeeds, boolean hasPeel,
                  boolean isSweet, String shape){
 
         //call constructor of food item
-        super(itemID, price, quantity, calories, expirationDate, color, hasSeeds);
+        super(itemID, name, price, quantity, calories, expirationDate, color, hasSeeds);
 
         this.shape = shape;
         this.hasPeel = hasPeel;

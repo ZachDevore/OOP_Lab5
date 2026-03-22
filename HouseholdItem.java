@@ -22,10 +22,10 @@ public class HouseholdItem extends StoreItem {
      * @param material Material the item is made of
      * @param areaOfUse Area where the item is used
      */
-    public HouseholdItem(int itemID, double price, int quantity,
+    public HouseholdItem(int itemID, String name, double price, int quantity,
                          double weight, String material, String areaOfUse) {
 
-        super(itemID, price, quantity);
+        super(itemID, name, price, quantity);
 
         this.weight = weight;
         this.material = material;

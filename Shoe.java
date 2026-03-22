@@ -24,11 +24,11 @@ public class Shoe extends ClothingItem{
      * @param closure_type
      * @param isSlip_resistant
      */
-    public Shoe(int itemID, String brand, String color, double price,
+    public Shoe(int itemID, String name, String brand, String color, double price,
                 int quantity, String size, String category, boolean isSlip_resistant,
                 String closure_type){
 
-        super(itemID, price, quantity, brand, size, color);
+        super(itemID, name, price, quantity, brand, size, color);
 
         this.category = category;
         this.isSlip_resistant = isSlip_resistant;

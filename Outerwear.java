@@ -14,11 +14,11 @@ public class Outerwear extends ClothingItem{
      * @param isWaterproof
      * @param isReversible
      */
-    public Outerwear(int itemID, int quantity, double price,
+    public Outerwear(int itemID, String name, int quantity, double price,
                       String brand,  String size,  String color,
                      boolean isReversible, boolean isWaterproof){
 
-        super(itemID,  price,  quantity,  brand,  size,  color);
+        super(itemID,  name, price,  quantity,  brand,  size,  color);
 
         this.isReversible = isReversible;
         this.isWaterproof = isWaterproof;

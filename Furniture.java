@@ -41,13 +41,13 @@ public class Furniture extends HouseholdItem {
      * @param length Length of the furniture
      * @param width Width of the furniture
      */
-    public Furniture(int itemID, double price, int quantity,
+    public Furniture(int itemID, String name, double price, int quantity,
                      double weight, String material, String areaOfUse,
                      String typeOfFurniture, boolean modular, boolean soldInSet,
                      Integer amountOfFeet, Integer amountOfPeopleCanHold,
                      Double length, Double width) {
 
-        super(itemID, price, quantity, weight, material, areaOfUse);
+        super(itemID, name, price, quantity, weight, material, areaOfUse);
 
         this.typeOfFurniture = typeOfFurniture;
         this.modular = modular;

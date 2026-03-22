@@ -27,11 +27,11 @@ public class FoodItem extends StoreItem {
      * @param expirationDate
      * @param hasSeeds
      */
-    public FoodItem(int itemID, double price, int quantity, int calories,
+    public FoodItem(int itemID, String name, double price, int quantity, int calories,
                     int expirationDate, String color, boolean hasSeeds) {
 
         //call constructor of StoreItem
-        super(itemID, price, quantity);
+        super(itemID, name, price, quantity);
 
         this.calories = calories;
         this.expirationDate = expirationDate;

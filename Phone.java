@@ -14,11 +14,11 @@ public class Phone extends ElectronicItem {
    /**
     * Constructor for Iphone
     */
-    public Phone(int itemID, double price, int quantity,
+    public Phone(int itemID, String name, double price, int quantity,
                 String brand, int warrantyMonths, double powerWatts, boolean isRechargeable,
                 String os, String chargerPort) {
 
-       super(itemID, price, quantity, brand, warrantyMonths, powerWatts, isRechargeable); // Calling constructor from ElectronicItem
+       super(itemID, name, price, quantity, brand, warrantyMonths, powerWatts, isRechargeable); // Calling constructor from ElectronicItem
 
        this.os = os;
        this.chargerPort = chargerPort;

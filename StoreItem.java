@@ -8,6 +8,9 @@ public class StoreItem {
     /** Unique id for each item in the store */
     private int itemID;
 
+    /** Name of the item */
+    private String name;
+
     /** Price for each item in the store */
     private double price;
 
@@ -20,8 +23,9 @@ public class StoreItem {
      * @param price
      * @param quantity
      */
-    public StoreItem(int itemID, double price, int quantity) {
+    public StoreItem(int itemID, String name, double price, int quantity) {
         this.itemID = itemID;
+        this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
@@ -31,6 +35,12 @@ public class StoreItem {
      * @return the ItemID of an item
      */
     public int getItemID() {return this.itemID;}
+
+    /**
+     * Getter for name
+     * @return
+     */
+    public String getName() {return this.name;}
 
     /**
      * Getter for price
@@ -50,6 +60,12 @@ public class StoreItem {
      * @param itemID 
      */
     public void setItemID(int itemID) {this.itemID = itemID;}
+
+    /**
+     * set the name
+     * @param name
+     */
+    public void setName(String name) {this.name = name;}
 
     /**
      * set the price
