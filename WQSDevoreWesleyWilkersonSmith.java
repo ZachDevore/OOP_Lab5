@@ -80,8 +80,20 @@ public class WQSDevoreWesleyWilkersonSmith {
     }
 
     public void addInventoryHardCoded() {
-        int index = getClothingItemInventoryCount();
-        
+        // ++ at the end means it adds to the count after the item is added ++ before means it adds before the item is added
+
+        // Add clothing items
+        clothingItemInventory[clothingItemInventoryCount++] = new Shirt(1, "Executive", 25.99, 2, "polo", "medium", "black", "short", "cotten");
+        clothingItemInventory[clothingItemInventoryCount++] = new Shoe(2, "AirMax", "NIke", "black", 150, 10, "10 1/2", "BasketBall", false, "lace");
+
+        // Add electric items
+        electricItemInventory[electricInventoryCount++] = new Phone(3, "Iphone", 1000, 100, "Apple", 24, 50, true, "IOS", "USB-C");
+        electricItemInventory[electricInventoryCount++] = new Laptop(4, "Macbook", 2500, 50, "Apple", 24, 100, true, 14, 32);
+        electricItemInventory[electricInventoryCount++] = new TV(5, "LP-505", 500, 20, "Samsung", 12, 20, false, true, true);
+
+        // Add food items
+        foodItemInventory[foodItemInventoryCount++] = new Vegetable(6, "Brocoli", 2, 30, 80, 06132026, "Green", false, false, false, false, true); // I'm pretty sure brocoli is a stem not sure though
+        foodItemInventory[foodItemInventoryCount++] = new Vegetable(7, "Kale", 1.99, 40, 20, 06132026, "Green", false, false, false, true, false);
 
     }
 
@@ -422,6 +434,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
 
         WQSDevoreWesleyWilkersonSmith store = new WQSDevoreWesleyWilkersonSmith(); // Initialize store object
+        store.addInventoryHardCoded(); // Add hardcoded items to the respective inventory
         Scanner scanner = new Scanner(System.in); // Initialize scanner object to read from the Standard Input
 
         boolean flag = false; // flag is to exit the loop when the user prompts 0
