@@ -54,7 +54,8 @@ public class ClothingItem extends StoreItem{
 
     /**
      * Setter for the brand
-     * @param  brand
+     * @param brand
+     *
      */
     public void setBrand(String brand) {this.brand = brand;}
 
