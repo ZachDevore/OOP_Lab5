@@ -104,8 +104,14 @@ public class WQSDevoreWesleyWilkersonSmith {
      */
     public void displayItems(StoreItem[] items, int itemCount) {
             // Hard coding a few instances in the main method so no need to check if the array is empty
+            System.out.println("----------------------------------------");
+            
             for (int i = 0; i < itemCount; i++) {
-                System.out.println(items[i] + "\n");
+
+                if (items[i] instanceof Shoe) { // The different categories are in their own arrays so just need to check the first instance
+                // System.out.printf("ItemID: %d  |  Price: $%.2f   |  Quantity: %d  |  Brand: %d |  Color: %s |  Size: %s  |  Category: %s  |  Slip Resistant: %b | Closure Type: %b", 
+                //                 items[i].getItemID(), items[i].getPrice(), items[i].getQuantity(), items[i].getBrand(), items[i].getColor(), items[i].getSize(), items[i].getCategory(), items[i].getIsSlip_Resistant());
+            }
             }
         }
     
@@ -437,28 +443,30 @@ public class WQSDevoreWesleyWilkersonSmith {
         store.addInventoryHardCoded(); // Add hardcoded items to the respective inventory
         Scanner scanner = new Scanner(System.in); // Initialize scanner object to read from the Standard Input
 
-        boolean flag = false; // flag is to exit the loop when the user prompts 0
+        store.displayItems(store.getElectricItemInventory(), store.getClothingItemInventoryCount());
+
+        // boolean flag = false; // flag is to exit the loop when the user prompts 0
         
 
-        do { // Ask the user if they want to add an item to inventory or sell the item
+        // do { // Ask the user if they want to add an item to inventory or sell the item
         
 
-            System.out.println("Press 1 to add inventory\nPress 2 to sell an item\nPress 0 to exit");
-            int addOrSellItem = scanner.nextInt();
+        //     System.out.println("Press 1 to add inventory\nPress 2 to sell an item\nPress 0 to exit");
+        //     int addOrSellItem = scanner.nextInt();
 
-            switch(addOrSellItem) {
+        //     switch(addOrSellItem) {
 
-                case 1: // Add Inventory
-                   store.addInventory(scanner); // Call the addInventory Method
-                   break;
-                case 2:
-                    //Sell Inventory
-                    break;
-                case 0:
-                    flag = true;
-                    break;
-            }
-        } while (!flag); // until the flag is triggered the program will keep prompting the user
+        //         case 1: // Add Inventory
+        //            store.addInventory(scanner); // Call the addInventory Method
+        //            break;
+        //         case 2:
+        //             //Sell Inventory
+        //             break;
+        //         case 0:
+        //             flag = true;
+        //             break;
+        //     }
+        // } while (!flag); // until the flag is triggered the program will keep prompting the user
 
         scanner.close(); // Close the scanner
     }

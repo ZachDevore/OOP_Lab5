@@ -37,11 +37,11 @@ public class Shoe extends ClothingItem{
 
     //getters and setters
 
-    public String getCategory(){return category;}
+    public String getCategory(){return this.category;}
 
-    public boolean getIsSlip_Resistant(){return isSlip_resistant;}
+    public boolean getIsSlip_Resistant(){return this.isSlip_resistant;}
 
-    public String getClosure_Type(){return closure_type;}
+    public String getClosure_Type(){return this.closure_type;}
 
     public void setCategory(String category){this.category = category;}
 

@@ -37,19 +37,19 @@ public class ClothingItem extends StoreItem{
      * Getter for brand type of the clothing
      * @return  brand
      */
-    public String getBrand() {return brand;}
+    public String getBrand() {return this.brand;}
 
     /**
      * getter the size of the clothing item
      * @return size
      */
-    public String getSize() {return size;}
+    public String getSize() {return this.size;}
 
     /**
      * Getter the color of the
      * @return color
      */
-    public String getColor() {return color;}
+    public String getColor() {return this.color;}
 
 
     /**
