@@ -515,7 +515,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                    break;
                 case 2:
                     //Sell Inventory
-                    store.sellItem(scanner);
+                    store.sellItem(scanner);//call the sellItem Method
                     break;
                 case 0:
                     flag = true;
