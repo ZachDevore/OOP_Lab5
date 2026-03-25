@@ -10,9 +10,6 @@ public class WQSDevoreWesleyWilkersonSmith {
     /** Array of Food Item Inventory */
     private  StoreItem[] foodItemInventory;
 
-    // Array of Household Item Inventory
-    private  StoreItem[] householdItemInventory;
-
     /** Keeps track of the number of items in electricItemInventory */
     private int electricInventoryCount;
 
@@ -22,20 +19,15 @@ public class WQSDevoreWesleyWilkersonSmith {
     /** Keeps track of the number of items in foodItemInventory */
     private int foodItemInventoryCount;
 
-    // Number of items in householdItemInventory
-    private int householdItemInventoryCount;
-
     /** Constructor for the Store */
     public WQSDevoreWesleyWilkersonSmith() {
         this.electricItemInventory = new StoreItem[1000]; // Initialize with a capacity of 1000 items
         this.clothingItemInventory = new StoreItem[1000]; // Initialize with a capacity of 1000 items
         this.foodItemInventory = new StoreItem[1000]; // Initialize with a capacity of 1000 items
-        this.householdItemInventory = new StoreItem[1000]; // Initialize with a capacity of 1000 items
-
+        
         this.electricInventoryCount = 0;
         this.clothingItemInventoryCount = 0;
         this.foodItemInventoryCount = 0;
-        this.householdItemInventoryCount = 0;
     }
 
     /** @return the array of electric items in inventory */
@@ -47,11 +39,6 @@ public class WQSDevoreWesleyWilkersonSmith {
     /** @return the array of food items in inventory */
     public StoreItem[] getFoodItemInventory() {return this.foodItemInventory;}
 
-    /**
-     * @return the array of household items in inventory
-     */
-    public StoreItem[] getHouseholdItemInventory() {return this.householdItemInventory;}
-
     /** @return the number of items in the electric inventory */
     public int getElectricItemInventoryCount() {return this.electricInventoryCount;}
 
@@ -59,13 +46,7 @@ public class WQSDevoreWesleyWilkersonSmith {
     public int getClothingItemInventoryCount() {return this.clothingItemInventoryCount;}
 
     /** @return the number of food items in the inventory */
-    public int getFoodItemInventoryCount() {return this.foodItemInventoryCount;}
-
-    /**
-     *
-     * @return the number of household items in the inventory
-     */
-    public int getHouseholdItemInventoryCount() {return this.householdItemInventoryCount;}
+    public int getFoodItemInventoryCount() {return this.foodItemInventoryCount;} 
 
     /** increments the count to reflect the number of electric items in the inventory */
     public void incrementElectricInventoryItemCount() {
@@ -81,9 +62,6 @@ public class WQSDevoreWesleyWilkersonSmith {
     public void incrementFoodItemInventoryCount() {
         this.foodItemInventoryCount++;
     }
-
-    // increments the count to reflect the number of household items in the inventory
-    public void incrementHouseholdItemInventoryCount() {this.householdItemInventoryCount++;}
 
     /**
      * Matches the name of an item to the items in inventory
@@ -114,12 +92,9 @@ public class WQSDevoreWesleyWilkersonSmith {
         electricItemInventory[electricInventoryCount++] = new TV(5, "LP-505", 500, 20, "Samsung", 12, 20, false, true, true);
 
         // Add food items
-        foodItemInventory[foodItemInventoryCount++] = new Vegetable(6, "Brocoli", 2, 30, 80, 06132026, "Green", false, false, true, false, false);
+        foodItemInventory[foodItemInventoryCount++] = new Vegetable(6, "Brocoli", 2, 30, 80, 06132026, "Green", false, false, false, false, true); // I'm pretty sure brocoli is a stem not sure though
         foodItemInventory[foodItemInventoryCount++] = new Vegetable(7, "Kale", 1.99, 40, 20, 06132026, "Green", false, false, false, true, false);
 
-        // Add household items
-        householdItemInventory[householdItemInventoryCount++] = new CleaningSupply(8, "Lemon Pledge", 6.99, 5, 14.2, "can", "furniture", "lemon", true, true);
-        householdItemInventory[householdItemInventoryCount++] = new Furniture(9, "couch", 800, 15, 100, "leather", "living room", "chair", false, true, 8, 3, 8, 4);
     }
 
     /**
@@ -157,7 +132,7 @@ public class WQSDevoreWesleyWilkersonSmith {
     }
 
     /**
-     * Adds an item to the store inventory
+     * Adds a item to the store inventory
      * @param scanner
      */
     public void addInventory(Scanner scanner) {
@@ -166,7 +141,6 @@ public class WQSDevoreWesleyWilkersonSmith {
         " Press 1 for Clothing Item\n" +
         " Press 2 for Electronic Item\n" +
         " Press 3 for Food Item\n" +
-        " Press 4 for Household Item\n" +
         " Press 0 to stop adding items\n"
 );
         int typeOfItem = scanner.nextInt();
@@ -448,106 +422,13 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                             incrementFoodItemInventoryCount(); // Increments the count for the number of food items in the inventory
                         }
-                        break;
-                    //add household item
-                    case 4:
-                        // display the items and their count in household item inventory
-                        displayItems(householdItemInventory, householdItemInventoryCount);
-                        System.out.println("What kind of household item would you like to add?\nPress 1 for Cleaning Supply\nPress 2 for Furniture");
-                        int householdSelection = scanner.nextInt();
-
-                        //add cleaning supply
-                        if (householdSelection == 1) {
-                            System.out.println("(int) Enter the ItemID: ");
-                            int itemID = scanner.nextInt();
-
-                            System.out.println("(String) Enter the Name: ");
-                            String name = scanner.nextLine();
-
-                            System.out.println("(double) Enter the price $");
-                            double price = scanner.nextDouble();
-
-                            System.out.println("(int) Enter the quantity: ");
-                            int quantity = scanner.nextInt();
-
-                            System.out.println("(double) Enter the weight: ");
-                            double weight = scanner.nextDouble();
-
-                            System.out.println("(String) Enter the material: ");
-                            String material = scanner.nextLine();
-
-                            System.out.println("(String) Enter the areaOfUse: ");
-                            String areaOfUse = scanner.nextLine();
-
-                            System.out.println("(String[]) Enter the chemicals contained separated by a \",\": ");
-                            String[] chemicals = scanner.nextLine().split(",");
-
-                            System.out.println("(boolean) Is the item toxic: ");
-                            boolean toxic = scanner.nextBoolean();
-
-                            System.out.println("(boolean) Is the item flammable: ");
-                            boolean flammable = scanner.nextBoolean();
-
-                            // Adds cleaning supply to the store inventory
-                            getHouseholdItemInventory()[getHouseholdItemInventoryCount()] = new CleaningSupply(int itemID, String name, double price, int quantity, double weight, String material, String areaOfUse, String[] chemicalsContained, boolean toxic, boolean flammable);
-
-                            // Increments the count for the number of household items in the store inventory
-                            incrementHouseholdItemInventoryCount();
-                        }
-                        // Add Furniture
-                        else{
-                            System.out.println("(int) Enter the ItemID: ");
-                            int itemID = scanner.nextInt();
-
-                            System.out.println("(String) Enter the Name: ");
-                            String name = scanner.nextLine();
-
-                            System.out.println("(double) Enter the price $");
-                            double price = scanner.nextDouble();
-
-                            System.out.println("(int) Enter the quantity: ");
-                            int quantity = scanner.nextInt();
-
-                            System.out.println("(double) Enter the weight: ");
-                            double weight = scanner.nextDouble();
-
-                            System.out.println("(String) Enter the material: ");
-                            String material = scanner.nextLine();
-
-                            System.out.println("(String) Enter the areaOfUse: ");
-                            String areaOfUse = scanner.nextLine();
-
-                            System.out.println("(String) Enter the type of furniture: ");
-                            String typeOfFurniture = scanner.nextLine();
-
-                            System.out.println("(boolean) Is the item modular: ");
-                            boolean modular = scanner.nextBoolean();
-
-                            System.out.println("(boolean) Is the item sold in a set: ");
-                            boolean soldInSet = scanner.nextBoolean();
-
-                            System.out.println("(int) Enter the number of feet that the furniture item has: ");
-                            int amountOfFeet = scanner.nextInt();
-
-                            System.out.println("(int) Enter the number of people that the furniture item can hold: ");
-                            int amountOfPeopleCanHold = scanner.nextInt();
-
-                            System.out.println("(double) Enter the length : ");
-                            double length = scanner.nextDouble();
-
-                            System.out.println("(double) Enter the width : ");
-                            double width = scanner.nextDouble();
-
-                            // Adds cleaning supply to the store inventory
-                            getHouseholdItemInventory()[getHouseholdItemInventoryCount()] = new Furniture(int itemID, String name, double price, int quantity, double weight, String material, String areaOfUse, String typeOfFurniture, boolean modular, boolean soldInSet, int amountOfFeet, int amountOfPeopleCanHold, double length, double width);
-
-                            // Increments the count for the number of household items in the store inventory
-                            incrementHouseholdItemInventoryCount();
-                        }
-                        break;
                    }
     }
 
+
+
+
+   
 
     public static void main(String[] args) {
 
