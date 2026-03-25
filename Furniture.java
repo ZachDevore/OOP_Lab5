@@ -14,16 +14,16 @@ public class Furniture extends HouseholdItem {
     private boolean soldInSet;
 
     /** Number of feet/legs the furniture has */
-    private Integer amountOfFeet;
+    private int amountOfFeet;
 
     /** Number of people the furniture can hold */
-    private Integer amountOfPeopleCanHold;
+    private int amountOfPeopleCanHold;
 
     /** Length of the furniture */
-    private Double length;
+    private double length;
 
     /** Width of the furniture */
-    private Double width;
+    private double width;
 
     /**
      * Creates a new Furniture item
@@ -44,8 +44,8 @@ public class Furniture extends HouseholdItem {
     public Furniture(int itemID, String name, double price, int quantity,
                      double weight, String material, String areaOfUse,
                      String typeOfFurniture, boolean modular, boolean soldInSet,
-                     Integer amountOfFeet, Integer amountOfPeopleCanHold,
-                     Double length, Double width) {
+                     int amountOfFeet, int amountOfPeopleCanHold,
+                     double length, double width) {
 
         super(itemID, name, price, quantity, weight, material, areaOfUse);
 
@@ -61,10 +61,10 @@ public class Furniture extends HouseholdItem {
     public String getTypeOfFurniture(){ return typeOfFurniture; }
     public boolean getModular(){ return modular; }
     public boolean getSoldInSet(){ return soldInSet; }
-    public Integer getAmountOfFeet(){ return amountOfFeet; }
-    public Integer getAmountOfPeopleCanHold(){ return amountOfPeopleCanHold; }
-    public Double getLength(){ return length; }
-    public Double getWidth(){ return width; }
+    public int getAmountOfFeet(){ return amountOfFeet; }
+    public int getAmountOfPeopleCanHold(){ return amountOfPeopleCanHold; }
+    public double getLength(){ return length; }
+    public double getWidth(){ return width; }
 
     public void setTypeOfFurniture(String typeOfFurniture){
         this.typeOfFurniture = typeOfFurniture;
@@ -78,19 +78,19 @@ public class Furniture extends HouseholdItem {
         this.soldInSet = soldInSet;
     }
 
-    public void setAmountOfFeet(Integer amountOfFeet){
+    public void setAmountOfFeet(int amountOfFeet){
         this.amountOfFeet = amountOfFeet;
     }
 
-    public void setAmountOfPeopleCanHold(Integer amountOfPeopleCanHold){
+    public void setAmountOfPeopleCanHold(int amountOfPeopleCanHold){
         this.amountOfPeopleCanHold = amountOfPeopleCanHold;
     }
 
-    public void setLength(Double length){
+    public void setLength(double length){
         this.length = length;
     }
 
-    public void setWidth(Double width){
+    public void setWidth(double width){
         this.width = width;
     }
 }
