@@ -131,6 +131,10 @@ public class WQSDevoreWesleyWilkersonSmith {
         return item.getPrice() + calculateSalexTax(item); // Item Price * Sales Tax
     }
 
+    /**
+     * Sell item uses scanner to complete the sales process
+     * @param scanner
+     */
     public void sellItem(Scanner scanner){
         System.out.println("which category would you like to sell from\n" +
                 "Press 1 for Clothing Item\n" +
