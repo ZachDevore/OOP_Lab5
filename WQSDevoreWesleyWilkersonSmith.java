@@ -441,30 +441,28 @@ public class WQSDevoreWesleyWilkersonSmith {
         store.addInventoryHardCoded(); // Add hardcoded items to the respective inventory
         Scanner scanner = new Scanner(System.in); // Initialize scanner object to read from the Standard Input
 
-        store.displayItems(store.getFoodItemInventory(), store.getFoodItemInventoryCount());
-
-        // boolean flag = false; // flag is to exit the loop when the user prompts 0
+        boolean flag = false; // flag is to exit the loop when the user prompts 0
         
 
-        // do { // Ask the user if they want to add an item to inventory or sell the item
+        do { // Ask the user if they want to add an item to inventory or sell the item
         
 
-        //     System.out.println("Press 1 to add inventory\nPress 2 to sell an item\nPress 0 to exit");
-        //     int addOrSellItem = scanner.nextInt();
+            System.out.println("Press 1 to add inventory\nPress 2 to sell an item\nPress 0 to exit");
+            int addOrSellItem = scanner.nextInt();
 
-        //     switch(addOrSellItem) {
+            switch(addOrSellItem) {
 
-        //         case 1: // Add Inventory
-        //            store.addInventory(scanner); // Call the addInventory Method
-        //            break;
-        //         case 2:
-        //             //Sell Inventory
-        //             break;
-        //         case 0:
-        //             flag = true;
-        //             break;
-        //     }
-        // } while (!flag); // until the flag is triggered the program will keep prompting the user
+                case 1: // Add Inventory
+                   store.addInventory(scanner); // Call the addInventory Method
+                   break;
+                case 2:
+                    //Sell Inventory
+                    break;
+                case 0:
+                    flag = true;
+                    break;
+            }
+        } while (!flag); // until the flag is triggered the program will keep prompting the user
 
         scanner.close(); // Close the scanner
     }
