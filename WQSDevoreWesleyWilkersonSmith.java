@@ -136,6 +136,24 @@ public class WQSDevoreWesleyWilkersonSmith {
     }
 
     /**
+     * Prints the return policy for a given item
+     * @param item the item to print the return policy for
+     */
+    public void printReturnPolicy(StoreItem item) {
+        if (item instanceof ElectronicItem) {
+            System.out.println("Electronics Return Policy: Electronics can be returned within 30 days with original receipt and packaging.");
+        } else if (item instanceof ClothingItem) {
+            System.out.println("Clothing Return Policy: Clothing can be returned within 60 days, unworn with original tags attached.");
+        } else if (item instanceof FoodItem) {
+            System.out.println("Food Return Policy: Food items can only be returned if expired or damaged within 7 days of purchase.");
+        } else if (item instanceof HouseholdItem) {
+            System.out.println("Household Return Policy: Household items can be returned within 45 days, unused and in original packaging.");
+        } else {
+            System.out.println("No specific return policy found. Please contact customer service.");
+        }
+    }
+
+    /**
      * Sell item uses scanner to complete the sales process
      * @param scanner
      */
@@ -195,6 +213,7 @@ public class WQSDevoreWesleyWilkersonSmith {
         System.out.printf("Sold %d x %s%n", quantityToSell, item.getName());
         System.out.printf("Price per item (with tax): $%.2f%n", calculatePrice(item));
         System.out.printf("Total: $%.2f%n", totalPrice);
+        printReturnPolicy(item);//prints the return policy after successful sale
 
         if (item.getQuantity() == 0) {
             System.out.println("Warning: " + item.getName() + " is now out of stock.");
@@ -220,10 +239,14 @@ public class WQSDevoreWesleyWilkersonSmith {
                         displayItems(clothingItemInventory, clothingItemInventoryCount); // Prints out the items the inventory
                         System.out.println("Which kind of Clothing Item would you like to add?\nPress 1 for Shoe, Press 2 for Shirt");
                         int typeOfClothingItem = scanner.nextInt();
+                        scanner.nextLine(); //
+
 
                         if (typeOfClothingItem == 1) { // Add Shoe
                             System.out.print("(int) Enter ItemID: ");
                             int itemID = scanner.nextInt();
+                            scanner.nextLine(); //
+
 
                             System.out.println("(String) Enter the Name: ");
                             String name = scanner.nextLine();
