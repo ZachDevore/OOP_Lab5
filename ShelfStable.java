@@ -3,7 +3,7 @@
  * Date: 3/9/26
  * Section: CSC 311-002
  */
-public class ShelfStable {
+public class ShelfStable extends StoreItem {
     
     /** Boolean instance variable to tell weather an item is shelf stable or not */
     private boolean isShelfStable;
@@ -11,7 +11,8 @@ public class ShelfStable {
     /**
      * Initializes a new instance is ShelfStable
      */
-    public ShelfStable() {
+    public ShelfStable(int itemID, String name, double price, int quantity) {
+        super(itemID, name, price, quantity);
         isShelfStable = true;
     }
 

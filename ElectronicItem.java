@@ -3,7 +3,7 @@
  * Date: 3/9/26
  * Section: CSC 311-002
  */
-public class ElectronicItem extends StoreItem {
+public class ElectronicItem extends ShelfStable {
     
     /** Brandname of the Item */
     private String brand;

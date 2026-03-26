@@ -5,7 +5,7 @@
  */
 
 
-public class ClothingItem extends StoreItem{
+public class ClothingItem extends ShelfStable {
 
     /** brand name of the item */
     private String brand;

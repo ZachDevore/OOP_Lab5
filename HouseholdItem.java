@@ -2,7 +2,7 @@
  * HouseholdItem represents general household products sold in the store.
  * It extends StoreItem and adds attributes specific to household goods.
  */
-public class HouseholdItem extends StoreItem {
+public class HouseholdItem extends ShelfStable {
 
     /** Weight of the household item */
     private double weight;
