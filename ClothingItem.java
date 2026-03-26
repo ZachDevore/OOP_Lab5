@@ -7,19 +7,20 @@
 
 public class ClothingItem extends StoreItem{
 
-    //brand name of the item
+    /** brand name of the item */
     private String brand;
 
-    //size of the item
+    /** size of the item */
     private String size;
 
-    //color of clothing item
+    /** color of clothing item */
     private String color;
 
 
     /**
      * Constructor for ClothingItem
      * @param brand
+     * @param name
      * @param size
      * @param color
      */
@@ -59,7 +60,15 @@ public class ClothingItem extends StoreItem{
      */
     public void setBrand(String brand) {this.brand = brand;}
 
+    /**
+     * Setter for the size
+     * @param size
+     */
     public void setSize(String size) {this.size = size;}
 
+    /**
+     * Setter for the color
+     * @param color
+     */
     public void setColor(String color) {this.color = color;}
 }
