@@ -72,7 +72,7 @@ public class WQSDevoreWesleyWilkersonSmith {
      */
     public StoreItem getStoreItem(StoreItem[] items, int itemCount, String name) {
         for (int i = 0; i < itemCount; i++) {
-            if (items[i].getName().equals(name)) { // If item passed equals name pass it's a match
+            if (items[i].getName().toLowerCase().equals(name.toLowerCase())) { // If item passed equals name pass it's a match
                 return items[i];
             }
         }
@@ -220,6 +220,15 @@ public class WQSDevoreWesleyWilkersonSmith {
         }
     }
 
+    public void addQuantity(StoreItem[] inventory, String name, Scanner scanner, int itemCount) {
+        System.out.println("How much inventory would you like to add? ");
+        int quantity = scanner.nextInt();
+
+        StoreItem itemtoAddQuantityTo = getStoreItem(inventory, itemCount, name);
+
+        itemtoAddQuantityTo.setQuantity(itemtoAddQuantityTo.getQuantity() + quantity); // Current quantity + quantity added
+    }
+
     /**
      * Adds a item to the store inventory
      * @param scanner
@@ -230,19 +239,33 @@ public class WQSDevoreWesleyWilkersonSmith {
         " Press 1 for Clothing Item\n" +
         " Press 2 for Electronic Item\n" +
         " Press 3 for Food Item\n" +
-        " Press 0 to stop adding items\n"
-);
+        " Press 0 to stop adding items\n");
+
+        int userChoice;
+
         int typeOfItem = scanner.nextInt();
 
          switch (typeOfItem) {
                     case 1: // Adding a Clothing Item
                         displayItems(clothingItemInventory, clothingItemInventoryCount); // Prints out the items the inventory
+
+                        System.out.println("Press 1 to add to an existing item and 2 to add a new item: ");
+                        userChoice = scanner.nextInt();
+                        if (userChoice == 1) {
+                            System.out.println("What is the name of the item you want to add");
+                            String name = scanner.nextLine();
+                            scanner.nextLine();
+                            addQuantity(clothingItemInventory, name, scanner, clothingItemInventoryCount);
+                        } else {
+
+                        
                         System.out.println("Which kind of Clothing Item would you like to add?\nPress 1 for Shoe, Press 2 for Shirt");
                         int typeOfClothingItem = scanner.nextInt();
                         scanner.nextLine(); //
 
 
                         if (typeOfClothingItem == 1) { // Add Shoe
+
                             System.out.print("(int) Enter ItemID: ");
                             int itemID = scanner.nextInt();
                             scanner.nextLine(); //
@@ -312,10 +335,19 @@ public class WQSDevoreWesleyWilkersonSmith {
                            
                             incrementClothingItemInventory(); // increment count for number of clothing items in inventory
                             return; // exit 
-                            
+                        }
                         }
                     case 2: // Adding an ElectricItem
                         displayItems(electricItemInventory, electricInventoryCount); // Displays the items in the electric inventory
+
+                        System.out.println("Press 1 to add to an existing item and 2 to add a new item: ");
+                        userChoice = scanner.nextInt();
+
+                        if (userChoice == 1) {
+                            System.out.println("What is the name of the item you want to add");
+                            String name = scanner.nextLine();
+                            addQuantity(electricItemInventory, name, scanner, electricInventoryCount);
+                        } else {
                         System.out.println("Which kind of electric item do you want to sell?\nPress 1 for TV\nPress 2 for Phone\nPress 3 for Laptop");
                         int typeOfElectricItem = scanner.nextInt();
 
@@ -430,9 +462,20 @@ public class WQSDevoreWesleyWilkersonSmith {
                             }
                             
                         }
+                    }
                         break;
                     case 3: // Add Food Item
                         displayItems(foodItemInventory, foodItemInventoryCount); // displays the items in the food inventory
+
+                        System.out.println("Press 1 to add to an existing item and 2 to add a new item: ");
+                        userChoice = scanner.nextInt();
+                        if (userChoice == 1) {
+                            System.out.println("What is the name of the item you want to add");
+                            String name = scanner.nextLine();
+                            addQuantity(foodItemInventory, name, scanner, foodItemInventoryCount); 
+                        } else {
+
+                        
                         System.out.println("What kind of food item would you like to add?\nPress 1 for Fruit\nPress 2 for Vegetable");
                         int fruitToAdd = scanner.nextInt();
 
@@ -515,6 +558,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                             incrementFoodItemInventoryCount(); // Increments the count for the number of food items in the inventory
                         }
+                    }
                    }
     }
 
@@ -525,6 +569,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
     public static void main(String[] args) {
 
+        System.out.println("Welcome to the Wilmington Quick Shop!");
 
         WQSDevoreWesleyWilkersonSmith store = new WQSDevoreWesleyWilkersonSmith(); // Initialize store object
         store.addInventoryHardCoded(); // Add hardcoded items to the respective inventory
