@@ -76,6 +76,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                 return items[i];
             }
         }
+        System.out.println("Item not found");
         return null; // If no items match return null
     }
 
@@ -107,8 +108,7 @@ public class WQSDevoreWesleyWilkersonSmith {
             System.out.println("-------------------------------------------------------------------------");
             
             for (int i = 0; i < itemCount; i++) {
-                System.out.println(items[i]);
-                System.out.println();
+                System.out.println(items[i] + "\n"); // Prints out items seperated by a newline
             }
            System.out.println("-------------------------------------------------------------------------");
         }
