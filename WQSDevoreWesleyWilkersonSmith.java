@@ -10,6 +10,15 @@ public class WQSDevoreWesleyWilkersonSmith {
     /** Array of Food Item Inventory */
     private  StoreItem[] foodItemInventory;
 
+    /** Array to hold items added to the cart during a sale */
+    private StoreItem[] cart;
+
+    /** Tracks the quantity of each item in the cart, index matches cart[] */
+    private int[] cartQuantities;
+
+    /** Tracks how many items are currently in the cart */
+    private int cartCount;
+
     /** Keeps track of the number of items in electricItemInventory */
     private int electricInventoryCount;
 
@@ -28,6 +37,11 @@ public class WQSDevoreWesleyWilkersonSmith {
         this.electricInventoryCount = 0;
         this.clothingItemInventoryCount = 0;
         this.foodItemInventoryCount = 0;
+
+        this.cart = new StoreItem[100];
+        this.cartQuantities = new int[100];
+        this.cartCount = 0;
+
     }
 
     /** @return the array of electric items in inventory */
@@ -112,6 +126,44 @@ public class WQSDevoreWesleyWilkersonSmith {
             }
            System.out.println("-------------------------------------------------------------------------");
         }
+
+    /**
+     * Displays store items in a formatted table with name, price, stock, brand, and return policy.
+     * Polymorphism: StoreItem references resolve to subclass types via instanceof at runtime.
+     * @param items     the inventory array to display
+     * @param itemCount the number of valid items in the array
+     */
+    public void displayItemsAsTable(StoreItem[] items, int itemCount) {
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.printf("%-15s %-10s %-8s %-12s %-30s%n",
+                "Name", "Price", "Stock", "Brand", "Return Policy");
+        System.out.println("-------------------------------------------------------------------------");
+
+        for (int i = 0; i < itemCount; i++) {
+            StoreItem item = items[i];
+
+            //  instanceof checks subclass type at runtime to get brand
+            String brand = "N/A";
+            if (item instanceof ElectronicItem)  brand = ((ElectronicItem) item).getBrand();
+            else if (item instanceof ClothingItem) brand = ((ClothingItem) item).getBrand();
+
+            // instanceof checks subclass type at runtime to get return policy
+            String policy;
+            if (item instanceof ElectronicItem)     policy = "Return within 30 days";
+            else if (item instanceof ClothingItem)  policy = "Return within 60 days";
+            else if (item instanceof FoodItem)      policy = "Return if expired, 7 days";
+            else if (item instanceof HouseholdItem) policy = "Return within 45 days";
+            else                                    policy = "Contact customer service";
+
+            System.out.printf("%-15s $%-9.2f %-8d %-12s %-30s%n",
+                    item.getName(),
+                    item.getPrice(),
+                    item.getQuantity(),
+                    brand,
+                    policy);
+        }
+        System.out.println("-------------------------------------------------------------------------");
+    }
     
     /**
      * Calculates the sales tax on an item
@@ -158,6 +210,11 @@ public class WQSDevoreWesleyWilkersonSmith {
      * @param scanner
      */
     public void sellItem(Scanner scanner){
+
+        //cart count resets for each transaction
+        cartCount = 0;
+
+        //choose the category
         System.out.println("which category would you like to sell from\n" +
                 "Press 1 for Clothing Item\n" +
                 "Press 2 for Electronic Item\n" +
@@ -185,39 +242,145 @@ public class WQSDevoreWesleyWilkersonSmith {
                 System.out.println("Invalid Category.");
                 return;
         }
+        //displays in table format
+        displayItemsAsTable(inventory, itemCount);
 
-        displayItems(inventory, itemCount);
+        // --- Step 3: Loop — add items to cart until user types 'done' ---
+        boolean shopping = true;
+        while (shopping) {
+            System.out.print("\nEnter the name of the item to add to cart (or 'done' to checkout): ");
+            String name = scanner.nextLine();
 
-        System.out.print("Enter the name of the item you want to sell: ");
-        scanner.nextLine(); // consume leftover newline
-        String name = scanner.nextLine();
+            if (name.equalsIgnoreCase("done")) {
+                shopping = false;
+                continue;
+            }
 
-        StoreItem item = getStoreItem(inventory, itemCount, name);
-        if (item == null) {
-            System.out.println("Item not found in inventory.");
+            StoreItem item = getStoreItem(inventory, itemCount, name);
+            if (item == null) {
+                System.out.println("Item not found. Please try again.");
+                continue;
+            }
+
+            System.out.print("Enter quantity: ");
+            int qty = scanner.nextInt();
+            scanner.nextLine(); // clear buffer after nextInt
+
+            if (qty > item.getQuantity()) {
+                System.out.println("Not enough stock. Available: " + item.getQuantity());
+                continue;
+            }
+
+            boolean alreadyInCart = false;
+            for (int i = 0; i < cartCount; i++) {
+                if (cart[i].getName().equalsIgnoreCase(item.getName())) {
+                    cartQuantities[i] += qty;
+                    alreadyInCart = true;
+                    System.out.println("Updated cart: " + item.getName() + " x" + cartQuantities[i]);
+                    break;
+                }
+            }
+
+            if (!alreadyInCart) {
+                cart[cartCount] = item;
+                cartQuantities[cartCount] = qty;
+                cartCount++;
+                System.out.println("Added to cart: " + item.getName() + " x" + qty);
+            }
+        }
+
+        // --- Validate cart is not empty ---
+        if (cartCount == 0) {
+            System.out.println("No items in cart. Returning to main menu.");
             return;
         }
 
-        System.out.print("Enter quantity to sell: ");
-        int quantityToSell = scanner.nextInt();
+        // --- Step 4: Order summary grouped by item type ---
+        System.out.println("\n==================== ORDER SUMMARY ====================");
 
-        if (quantityToSell > item.getQuantity()) {
-            System.out.println("Not enough stock. Available: " + item.getQuantity());
+        String[] groups = {"Electronics", "Clothing", "Food", "Other"};
+        double grandTotal = 0;
+
+        for (String group : groups) {
+            boolean headerPrinted = false;
+
+            for (int i = 0; i < cartCount; i++) {
+                StoreItem item = cart[i];
+
+                //instanceof resolves subclass type at runtime
+                boolean matches =
+                        (group.equals("Electronics") && item instanceof ElectronicItem)  ||
+                                (group.equals("Clothing")    && item instanceof ClothingItem)    ||
+                                (group.equals("Food")        && item instanceof FoodItem)        ||
+                                (group.equals("Other")       && !(item instanceof ElectronicItem)
+                                        && !(item instanceof ClothingItem)
+                                        && !(item instanceof FoodItem));
+
+                if (matches) {
+                    if (!headerPrinted) {
+                        System.out.println("\n  [ " + group + " ]");
+                        headerPrinted = true;
+                    }
+
+                    int qty = cartQuantities[i];
+                    // calculatePrice applies correct tax rate via instanceof at runtime
+                    double priceWithTax = calculatePrice(item);
+                    double lineTotal = priceWithTax * qty;
+                    grandTotal += lineTotal;
+
+                    System.out.printf("  %-15s x%-3d  $%.2f each  =>  $%.2f%n",
+                            item.getName(), qty, priceWithTax, lineTotal);
+                }
+            }
+        }
+
+        System.out.printf("%n  Grand Total: $%.2f%n", grandTotal);
+        System.out.println("=======================================================");
+
+        // Confirm checkout
+
+        System.out.print("\nConfirm checkout? (yes/no): ");
+        String confirm = scanner.nextLine();
+        //scanner.nextLine();
+
+
+        if (!confirm.equalsIgnoreCase("yes")) {
+            System.out.println("Checkout cancelled. Returning to main menu.");
             return;
         }
 
-        item.setQuantity(item.getQuantity() - quantityToSell);
-
-        double totalPrice = calculatePrice(item) * quantityToSell;
-
-        System.out.printf("Sold %d x %s%n", quantityToSell, item.getName());
-        System.out.printf("Price per item (with tax): $%.2f%n", calculatePrice(item));
-        System.out.printf("Total: $%.2f%n", totalPrice);
-        printReturnPolicy(item);//prints the return policy after successful sale
-
-        if (item.getQuantity() == 0) {
-            System.out.println("Warning: " + item.getName() + " is now out of stock.");
+        // Deduct sold quantities from inventory
+        for (int i = 0; i < cartCount; i++) {
+            StoreItem item = cart[i];
+            item.setQuantity(item.getQuantity() - cartQuantities[i]);
+            if (item.getQuantity() == 0) {
+                System.out.println("Warning: " + item.getName() + " is now out of stock.");
+            }
         }
+
+        System.out.println("\nThank you for your purchase!");
+
+        // Print return policies (once per category purchased)
+
+        System.out.println("\n--- Return Policies for Your Purchase ---");
+        boolean printedElec = false, printedCloth = false, printedFood = false;
+        for (int i = 0; i < cartCount; i++) {
+            StoreItem item = cart[i];
+            if (item instanceof ElectronicItem && !printedElec) {
+                printReturnPolicy(item);
+                printedElec = true;
+            } else if (item instanceof ClothingItem && !printedCloth) {
+                printReturnPolicy(item);
+                printedCloth = true;
+            } else if (item instanceof FoodItem && !printedFood) {
+                printReturnPolicy(item);
+                printedFood = true;
+            }
+        }
+
+        //  Display updated inventory after sale
+        System.out.println("\n--- Updated Inventory ---");
+        displayItemsAsTable(inventory, itemCount);
     }
 
     public void addQuantity(StoreItem[] inventory, String name, Scanner scanner, int itemCount) {
@@ -274,6 +437,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             System.out.println("(String) Enter the Name: ");
                             String name = scanner.nextLine();
 
+
                             System.out.print("(String) Enter the Brand: ");
                             String brand = scanner.nextLine();
 
@@ -301,6 +465,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             getClothingItemInventory()[getClothingItemInventoryCount()] = new Shoe(itemID, name, brand, color, price, quantity, size, category, isSlipResistant, closureType); // Add Shoe
 
                             incrementClothingItemInventory(); // Increment count for number of clothingItems in inventory
+                            displayItemsAsTable(clothingItemInventory, clothingItemInventoryCount);//dislays updated item
                             return; // exit
 
                         } else { // Add Shirt
@@ -334,6 +499,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             getClothingItemInventory()[getClothingItemInventoryCount()] = new Shirt(itemID, name, price, quantity, brand, size, color, sleeveType, material); // Adds Shirt
                            
                             incrementClothingItemInventory(); // increment count for number of clothing items in inventory
+                            displayItemsAsTable(clothingItemInventory, clothingItemInventoryCount);//dislays updated item
                             return; // exit 
                         }
                         }
@@ -386,6 +552,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                                 getElectricItemInventory()[getElectricItemInventoryCount()] = new TV(itemID, name, price, quantity, brand, warrentyMonths, powerWatts, isRechargable, isSmart, isVesaCombatiable); // Adds TV
                                 incrementElectricInventoryItemCount(); // Increments the count for number of electric items in the inventory
+                                displayItemsAsTable(electricItemInventory, electricInventoryCount);//displays updated inventory
                                 return; // Exit
                             }
                             case 2: { // Add Phone
@@ -422,6 +589,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 getElectricItemInventory()[getElectricItemInventoryCount()] = new Phone(itemID, name, price, quantity, brand, warrentyMonths, powerWatts, isRechargable, os, chargerPort); // Adds Phone to the inventory
 
                                 incrementElectricInventoryItemCount(); // Increments the count for number of electric items in the inventory
+                                displayItemsAsTable(electricItemInventory, electricInventoryCount);//displays updated inventory
                                 return;
                             }
                             case 3: { // Add Laptop
@@ -457,7 +625,8 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                                 getElectricItemInventory()[getElectricItemInventoryCount()] = new Laptop(itemID, name, price, quantity, brand, warrentyMonths, powerWatts, isRechargable, screenSize, ram); // Adds Laptop to the inventory
 
-                                incrementElectricInventoryItemCount(); // Increments the count for number of electric items in the store
+                                incrementElectricInventoryItemCount();// Increments the count for number of electric items in the store
+                                displayItemsAsTable(electricItemInventory, electricInventoryCount);//displays updated inventory
                                 return;
                             }
                             
@@ -515,7 +684,8 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                             getFoodItemInventory()[getFoodItemInventoryCount()] = new Fruit(itemID, name, price, quantity, calories, expirationDate, color, hasSeeds, hasPeel, isSweet, shape); // Adds fruit to the store inventory
 
-                            incrementFoodItemInventoryCount(); // Increments the count for number of food items in the store inventory
+                            incrementFoodItemInventoryCount();// Increments the count for number of food items in the store inventory
+                            displayItemsAsTable(foodItemInventory, foodItemInventoryCount);//dislays updated item
                         
                         } else { // Add Vegetable
                             System.out.println("(int) Enter the ItemID: ");
