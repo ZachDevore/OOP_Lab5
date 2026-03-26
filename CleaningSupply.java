@@ -2,6 +2,7 @@
  * CleaningSupply represents cleaning products sold in the store.
  * It extends HouseholdItem and includes properties related to chemical safety.
  */
+import java.util.Arrays;
 public class CleaningSupply extends HouseholdItem {
 
     /** List of chemicals contained in the cleaning supply */
@@ -79,5 +80,14 @@ public class CleaningSupply extends HouseholdItem {
      */
     public void setFlammable(boolean flammable){
         this.flammable = flammable;
+    }
+
+    /**
+     * String representation of a cleaning item
+     */
+    @Override
+    public String toString() {
+        return String.format("ItemID: %d| Name: %s| Price: $%.2f| Quantity: %d| Weight: %.2f| Material: %s| Area of Use: %s| ChemicalsContained: %s, Is toxic? %b| Is flammable? %b", 
+                    getItemID(), getName(), getPrice(), getQuantity(), getWeight(), getMaterial(), getAreaOfUse(), Arrays.toString(getChemicalsContained()), isToxic(), isFlammable());
     }
 }
