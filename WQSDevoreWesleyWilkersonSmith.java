@@ -478,6 +478,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                             System.out.print("(int) Enter the Quantity: ");
                             int quantity = scanner.nextInt();
+                            scanner.nextLine();
 
                             System.out.print("(double) Enter the Size: ");
                             double size = scanner.nextDouble();
@@ -498,6 +499,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                         } else { // Add Shirt
                             System.out.print("(int) Enter ItemID: ");
                             int itemID = scanner.nextInt();
+                            scanner.nextLine();
 
                             System.out.println("(String) Enter the Name: ");
                             String name = scanner.nextLine();
@@ -513,6 +515,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                             System.out.print("(int) Enter the Quantity: ");
                             int quantity = scanner.nextInt();
+                            scanner.nextLine();
 
                             System.out.print("(String) Enter the Size: ");
                             double size = scanner.nextDouble();
@@ -549,16 +552,18 @@ public class WQSDevoreWesleyWilkersonSmith {
                                 // Add TV
                                 System.out.println("(int) Enter the ItemID: ");
                                 int itemID = scanner.nextInt();
+                                scanner.nextLine();
 
                                 System.out.println("(String) Enter the Name: ");
                                 String name = scanner.nextLine();
-                                scanner.nextLine();
+
 
                                 System.out.println("(double) Enter the price $");
                                 double price = scanner.nextDouble();
 
                                 System.out.println("(int) Enter the quantity: ");
                                 int quantity = scanner.nextInt();
+                                scanner.nextLine();
 
                                 System.out.println("(String) Enter the brand: ");
                                 String brand = scanner.nextLine();
@@ -595,6 +600,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                                 System.out.println("(int) Enter the quantity: ");
                                 int quantity = scanner.nextInt();
+                                scanner.nextLine();
 
                                 System.out.println("(String) Enter the brand: ");
                                 String brand = scanner.nextLine();
@@ -623,6 +629,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             case 3: { // Add Laptop
                                 System.out.println("(int) Enter the ItemID: ");
                                 int itemID = scanner.nextInt();
+                                scanner.nextLine();
 
                                 System.out.println("(String) Enter the Name: ");
                                 String name = scanner.nextLine();
@@ -632,6 +639,7 @@ public class WQSDevoreWesleyWilkersonSmith {
 
                                 System.out.println("(int) Enter the quantity: ");
                                 int quantity = scanner.nextInt();
+                                scanner.nextLine();
 
                                 System.out.println("(String) Enter the brand: ");
                                 String brand = scanner.nextLine();
@@ -679,6 +687,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                         if (fruitToAdd == 1) { // Add Fruit
                             System.out.println("(int) Enter the ItemID: ");
                             int itemID = scanner.nextInt();
+                            scanner.nextLine();
 
                             System.out.println("(String) Enter the Name: ");
                             String name = scanner.nextLine();
