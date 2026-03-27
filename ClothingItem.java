@@ -11,7 +11,7 @@ public class ClothingItem extends ShelfStable {
     private String brand;
 
     /** size of the item */
-    private String size;
+    private double size;
 
     /** color of clothing item */
     private String color;
@@ -19,12 +19,15 @@ public class ClothingItem extends ShelfStable {
 
     /**
      * Constructor for ClothingItem
-     * @param brand
+     * @param itemID
      * @param name
+     * @param price
+     * @param quantity
+     * @param brand
      * @param size
      * @param color
      */
-    public ClothingItem(int itemID, String name, double price, int quantity, String brand, String size, String color){
+    public ClothingItem(int itemID, String name, double price, int quantity, String brand, double size, String color){
 
         super(itemID, name, price, quantity);
 
@@ -44,7 +47,7 @@ public class ClothingItem extends ShelfStable {
      * getter the size of the clothing item
      * @return size
      */
-    public String getSize() {return this.size;}
+    public double getSize() {return this.size;}
 
     /**
      * Getter the color of the
@@ -64,7 +67,7 @@ public class ClothingItem extends ShelfStable {
      * Setter for the size
      * @param size
      */
-    public void setSize(String size) {this.size = size;}
+    public void setSize(double size) {this.size = size;}
 
     /**
      * Setter for the color

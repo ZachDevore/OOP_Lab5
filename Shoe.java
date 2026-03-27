@@ -15,17 +15,18 @@ public class Shoe extends ClothingItem{
 
     /**
      * @param itemID
-     * @param brand
-     * @param color
+     * @param name
      * @param price
      * @param quantity
+     * @param brand
      * @param size
+     * @param color
      * @param category
-     * @param closure_type
      * @param isSlip_resistant
+     * @param closure_type
      */
-    public Shoe(int itemID, String name, String brand, String color, double price,
-                int quantity, String size, String category, boolean isSlip_resistant,
+    public Shoe(int itemID, String name,double price, int quantity,String brand, double size,String color,
+                  String category, boolean isSlip_resistant,
                 String closure_type){
 
         super(itemID, name, price, quantity, brand, size, color);

@@ -9,16 +9,17 @@ public class Outerwear extends ClothingItem{
 
     /**
      * @param itemID
-     * @param price
+     * @param name
      * @param quantity
+     * @param price
      * @param brand
      * @param size
      * @param color
-     * @param isWaterproof
      * @param isReversible
+     * @param isWaterproof
      */
     public Outerwear(int itemID, String name, int quantity, double price,
-                      String brand,  String size,  String color,
+                      String brand,  double size,  String color,
                      boolean isReversible, boolean isWaterproof){
 
         super(itemID,  name, price,  quantity,  brand,  size,  color);

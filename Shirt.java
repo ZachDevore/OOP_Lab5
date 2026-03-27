@@ -12,14 +12,15 @@ public class Shirt extends ClothingItem{
 
     /**
      * @param itemID
-     * @param brand
-     * @param color
+     * @param name
      * @param price
      * @param quantity
+     * @param brand
      * @param size
+     * @param color
      */
 
-    public Shirt(int itemID, String name, double price, int quantity,String brand, String size, String color, String sleeve_type, String material){
+    public Shirt(int itemID, String name, double price, int quantity,String brand, double size, String color, String sleeve_type, String material){
 
         super(itemID, name, price, quantity, brand, size, color);
 

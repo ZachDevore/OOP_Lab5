@@ -114,9 +114,9 @@ public class WQSDevoreWesleyWilkersonSmith {
         // ++ at the end means it adds to the count after the item is added ++ before means it adds before the item is added
 
         // Add clothing items
-        clothingItemInventory[clothingItemInventoryCount++] = new Shirt(1, "Executive", 25.99, 2, "polo", "medium", "black", "short", "cotten");
-        clothingItemInventory[clothingItemInventoryCount++] = new Shoe(2, "AirMax", "NIke", "black", 150, 10, "10 1/2", "BasketBall", false, "lace");
-        clothingItemInventory[clothingItemInventoryCount++] = new Outerwear(3, "RainJacket", 10, 89.99, "Columbia", "Large", "Navy", true, true);
+        clothingItemInventory[clothingItemInventoryCount++] = new Shirt(1, "Executive", 25.99, 2, "polo", 18, "black", "short", "cotten");
+        clothingItemInventory[clothingItemInventoryCount++] = new Shoe(2, "AirMax", 150.00, 30, "Nike", 10.0, "Black", "BasketBall", false, "lace");
+        clothingItemInventory[clothingItemInventoryCount++] = new Outerwear(3, "RainJacket", 10, 89.99, "Columbia", 34, "Navy", true, true);
         // Add electric items
         electricItemInventory[electricInventoryCount++] = new Phone(3, "Iphone", 1000, 100, "Apple", 24, 50, true, "IOS", "USB-C");
         electricItemInventory[electricInventoryCount++] = new Laptop(4, "Macbook", 2500, 50, "Apple", 24, 100, true, 14, 32);
@@ -479,8 +479,8 @@ public class WQSDevoreWesleyWilkersonSmith {
                             System.out.print("(int) Enter the Quantity: ");
                             int quantity = scanner.nextInt();
 
-                            System.out.print("(String) Enter the Size: ");
-                            String size = scanner.nextLine();
+                            System.out.print("(double) Enter the Size: ");
+                            double size = scanner.nextDouble();
 
                             System.out.print("(String) Enter the Category: ");
                             String category = scanner.nextLine();
@@ -491,9 +491,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             System.out.print("(String) Enter the Closure type: ");
                             String closureType = scanner.nextLine();
 
-                            getClothingItemInventory()[getClothingItemInventoryCount()] = new Shoe(itemID, name, brand, color, price, quantity, size, category, isSlipResistant, closureType); // Add Shoe
-
-                            incrementClothingItemInventory(); // Increment count for number of clothingItems in inventory
+                            getClothingItemInventory()[getClothingItemInventoryCount()] = new Shoe(itemID, name, price, quantity, brand, size, color, category, isSlipResistant, closureType);                            incrementClothingItemInventory(); // Increment count for number of clothingItems in inventory
                             displayItemsAsTable(clothingItemInventory, clothingItemInventoryCount);//dislays updated item
                             return; // exit
 
@@ -517,7 +515,7 @@ public class WQSDevoreWesleyWilkersonSmith {
                             int quantity = scanner.nextInt();
 
                             System.out.print("(String) Enter the Size: ");
-                            String size = scanner.nextLine();
+                            double size = scanner.nextDouble();
 
                             System.out.print("(String) Enter the type of sleeve: ");
                             String sleeveType = scanner.nextLine();
